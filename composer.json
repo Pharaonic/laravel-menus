@@ -1,0 +1,40 @@
+{
+    "name": "pharaonic/laravel-menus",
+    "description": "Laravel Menus Management.",
+    "keywords": [
+        "laravel menus",
+        "php menus",
+        "menus",
+        "laravel",
+        "php"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moamen Eltouny (Raggi)",
+            "email": "raggi@raggitech.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": ">=6.0",
+        "pharaonic/laravel-translatable": ">=1.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pharaonic\\Laravel\\Menus\\MenusServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Pharaonic\\Laravel\\Menus\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
