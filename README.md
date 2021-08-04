@@ -11,7 +11,7 @@
   <a href="https://packagist.org/packages/pharaonic/laravel-menus" target="_blank"><img src="https://poser.pugx.org/pharaonic/laravel-menus/downloads" alt="Packagist Downloads"></a>
 </p>
 
-<h3 align="center">Laravel Menus Management.</h3>
+<h3 align="center">Laravel Menus Items Management.</h3>
 <h5 align="center">Depends on <a href="https://pharaonic.io/package/2-laravel/16-translatable" target="_blank">Translatable</a>.</h5>
 <br>
 
