@@ -70,7 +70,7 @@ class Menu extends Model
      * @param string $locale
      * @return Menu
      */
-    public static function create(string $section, string $title, string $url, int $sort = 0, bool $visible = true, string $locale = null)
+    public static function set(string $section, string $title, string $url, int $sort = 0, bool $visible = true, string $locale = null)
     {
         $menu           = new self;
         $menu->section  = $section;
