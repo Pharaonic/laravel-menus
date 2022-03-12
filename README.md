@@ -11,20 +11,16 @@
 </p>
 
 <h3 align="center">Laravel Menus Items Management.</h3>
-<h5 align="center">Depends on <a href="https://pharaonic.io/package/2-laravel/16-translatable" target="_blank">Translatable</a>.</h5>
+<h5 align="center">Depends on <a href="https://pharaonic.io/packages/laravel/translatable" target="_blank">Translatable</a>.</h5>
 <br>
 
 ## Documentation
 
-You can find the detailed documentation here in [Laravel Menus Documentation](https://pharaonic.io/package/2-laravel/21-menus).
+You can find the detailed documentation here in [Laravel Menus Documentation](https://pharaonic.io/package/laravel/menus).
 
 ## Contributing
 
 Thank you for considering contributing to this package! Be one of Pharaonic team.
-
-## Pharaonic Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Pharaonic packages development. If you are interested in becoming a sponsor, please visit the Pharaonic [Liberapay page](https://en.liberapay.com/Pharaonic) or [Patreon page](https://patreon.com/Pharaonic).
 
 ## License
 
