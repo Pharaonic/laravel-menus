@@ -16,7 +16,7 @@
 
 ## Documentation
 
-You can find the detailed documentation here in [Laravel Menus Documentation](https://pharaonic.io/package/laravel/menus).
+You can find the detailed documentation here in [Laravel Menus Documentation](https://pharaonic.io/packages/laravel/menus).
 
 ## Contributing
 
