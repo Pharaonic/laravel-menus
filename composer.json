@@ -28,7 +28,8 @@
             "providers": [
                 "Pharaonic\\Laravel\\Menus\\MenusServiceProvider"
             ]
-        }
+        },
+        "file": ["src/helper.php"]
     },
     "autoload": {
         "psr-4": {

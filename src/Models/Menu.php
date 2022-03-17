@@ -11,8 +11,10 @@ use Pharaonic\Laravel\Translatable\Translatable;
  * @property string $url
  * @property integer $sort
  * @property integer $visible
+ * @property integer $parent_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Menu $children
  * @property MenuTranslation $translations
  *
  * @author Moamen Eltouny (Raggi) <raggi@raggitech.com>
@@ -26,7 +28,7 @@ class Menu extends Model
      *
      * @var array
      */
-    protected $fillable = ['section', 'url', 'sort', 'visible'];
+    protected $fillable = ['section', 'url', 'sort', 'visible', 'parent_id'];
 
     /**
      * Translatable attributes names.
@@ -47,7 +49,7 @@ class Menu extends Model
     ];
 
     /**
-     * Get section'items.
+     * Get section items.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  string  $section
@@ -56,7 +58,34 @@ class Menu extends Model
      */
     public function scopeSection($query, string $section, string $locale = null)
     {
-        return $query->translated($locale)->where('section', $section)->where('visible', true)->orderBy('sort', 'ASC');
+        return $query->translated($locale)->with([
+            'children' => function ($q) {
+                return $q->visible();
+            },
+            'children.translations'
+        ])->where([
+            'section'   => $section,
+            'parent_id' => null
+        ])->visible()->orderBy('sort', 'ASC');
+    }
+
+    /**
+     * Get visible items.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeVisible($query)
+    {
+        return $query->where('visible', true);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_id', 'id');
     }
 
     /**
@@ -70,18 +99,25 @@ class Menu extends Model
      * @param string $locale
      * @return Menu
      */
-    public static function set(string $section, string $title, string $url, int $sort = 0, bool $visible = true, string $locale = null)
+    public static function set(string $section, mixed $title, string $url, int $parent = null, int $sort = 0, bool $visible = true)
     {
-        $menu           = new self;
-        $menu->section  = $section;
-        $menu->url      = $url;
-        $menu->sort     = $sort;
-        $menu->visible  = $visible;
-        $menu->save();
+        $menu = new self;
+        $data = [
+            'section' => $section,
+            'url'       => $url,
+            'parent_id' => $parent,
+            'sort'      => $sort,
+            'visible'   => $visible
+        ];
 
-        $menu->translateOrNew($locale ?? app()->getLocale())->title = $title;
-        $menu->save();
+        $localKey = $menu->translationsKey ?? 'locale';
 
+        if (is_array($title))
+            $data[$localKey] = $title;
+        else
+            $data[$localKey][app()->getLocale()]['title'] = $title;
+
+        $menu->fill($data)->save();
         return $menu;
     }
 }

@@ -39,10 +39,7 @@ class MenusServiceProvider extends ServiceProvider
 
         // Blade - Directive
         Blade::directive('menu', function ($section) {
-            $section = Menu::section(trim($section, '\'"'))->get();
-            if ($section->isEmpty()) return;
-
-            return view('laravel-menus::section', ['section' => $section])->render();
+            return "<?php echo \menu($section, true); ?>";
         });
     }
 }
