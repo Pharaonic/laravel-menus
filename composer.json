@@ -34,7 +34,7 @@
         "psr-4": {
             "Pharaonic\\Laravel\\Menus\\": "src"
         },
-        "file": [
+        "files": [
             "src/helper.php"
         ]
     },
