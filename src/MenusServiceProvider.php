@@ -38,8 +38,8 @@ class MenusServiceProvider extends ServiceProvider
         ], ['pharaonic', 'laravel-menus']);
 
         // Blade - Directive
-        Blade::directive('menu', function ($section) {
-            return "<?php echo \menu($section, true); ?>";
+        Blade::directive('menu', function ($data) {
+            return "<?php echo \menu($data); ?>";
         });
     }
 }
