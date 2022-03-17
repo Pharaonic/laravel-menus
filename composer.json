@@ -28,13 +28,15 @@
             "providers": [
                 "Pharaonic\\Laravel\\Menus\\MenusServiceProvider"
             ]
-        },
-        "file": ["src/helper.php"]
+        }
     },
     "autoload": {
         "psr-4": {
             "Pharaonic\\Laravel\\Menus\\": "src"
-        }
+        },
+        "file": [
+            "src/helper.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
