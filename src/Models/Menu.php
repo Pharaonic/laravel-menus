@@ -79,6 +79,14 @@ class Menu extends Model
     {
         return $query->where('visible', true);
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Menu::class, 'parent_id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
